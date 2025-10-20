@@ -8,7 +8,11 @@ interface Props {
   image?: string;
 }
 
-const { title = "Astro Store" } = Astro.props;
+const {
+  title = "Astro Store",
+  description = "Astro store",
+  image = "https://www.pexels.com/photo/vibrant-orange-tesla-sports-car-front-view-34314481/",
+} = Astro.props;
 ---
 
 <html lang="es">
