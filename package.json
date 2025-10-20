@@ -2,6 +2,8 @@
   "name": "astro-store",
   "type": "module",
   "version": "0.0.1",
+  "description": "Astro project with Auth Astro, Nanostores, TailwindCSS, Cloudinary, and Swiper integration following Fernando Herrera Astro course.",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
