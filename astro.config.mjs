@@ -9,7 +9,8 @@ export default defineConfig({
   integrations: [db(), auth(), react()],
   output: "server",
   adapter: netlify({
-    edgeMiddleware: true // Enable edge middleware for better performance
+    // Ensure we're not targeting Netlify Edge Functions runtime
+    edge: false,
   }),
   vite: {
     plugins: [tailwindcss()],
