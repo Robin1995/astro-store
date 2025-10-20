@@ -1,14 +1,14 @@
 [build]
-  # Create DB, run migrations, seed data, then build
-  command = "npx astro db push && node db/seed.ts && npm run build"
+  # Create database directory, initialize DB, seed data, then build
+  command = "mkdir -p .astro && touch .astro/content.db && npx astro db push && node db/seed.ts && npm run build"
   publish = "dist"
 
 # Netlify functions configuration
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  # Include the Astro DB file in the function bundle
-  included_files = [".astro/content.db"]
+  # Include the Astro DB file and directory in the function bundle
+  included_files = [".astro/**/*"]
 
 # Handle SPA routing
 [[redirects]]
