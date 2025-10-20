@@ -108,21 +108,19 @@ import AuthLayout from "@/layouts/AuthLayout.astro";
       redirect: false,
     } as any);
 
-    // resp is an object like { error, status, ok, url }
-    const authResp = resp as any;
-    console.log(authResp);
-    
-    if (!authResp || authResp.error || authResp.ok === false) {
-      const message =
-        authResp?.error ?? "Usuario / Contraseña no son correctos";
+    if (resp) {
       Swal.fire({
         icon: "error",
         title: "Error al ingresar",
-        text: message,
+        // text: error.message,
+        text: "Usuario / Contraseña no son correctos",
       });
       btnSubmit.removeAttribute("disabled");
       return;
     }
+
+    // TODO:
+    window.location.replace("/");
   });
 
   bntGoogle.addEventListener("click", async () => {
