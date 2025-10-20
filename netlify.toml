@@ -1,13 +1,17 @@
 [build]
-  command = "npm run build"
+  # Create DB, run migrations, seed data, then build
+  command = "npx astro db push && node db/seed.ts && npm run build"
   publish = "dist"
 
 # Netlify functions configuration
 [functions]
   directory = "netlify/functions"
+  node_bundler = "esbuild"
+  # Include the Astro DB file in the function bundle
+  included_files = [".astro/content.db"]
 
 # Handle SPA routing
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/.netlify/functions/entry-server"
   status = 200
